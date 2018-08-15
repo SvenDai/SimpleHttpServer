@@ -21,14 +21,15 @@ public class WebServer {
         try {
             server = new ServerSocket(8888);
             //监听链接，接收数据
-            this.receive();
+            //this.receive();
+            this.receivePost();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * 接收请求数据
+     * 接收GET请求数据
      */
     private void receive(){
         try {
@@ -52,6 +53,21 @@ public class WebServer {
             e.printStackTrace();
         }
 
+    }
+
+    private void receivePost(){
+        try {
+            //监听客户端连接
+            Socket client   = server.accept();
+            byte[] data     = new byte[10240];
+            int length      = client.getInputStream().read(data);
+            String reqData  = new String(data,0,length);
+
+            System.out.println(reqData);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

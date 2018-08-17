@@ -1,6 +1,5 @@
 package com.svendai.server;
 
-import javax.xml.ws.http.HTTPBinding;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
